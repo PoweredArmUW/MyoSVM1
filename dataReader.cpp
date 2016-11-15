@@ -1,6 +1,5 @@
 #include <fstream>
 #include <string>
-#include <iostream>
 using namespace std;
 
 class DataArray{
@@ -81,6 +80,6 @@ DataArray* readData(string filename){
         word.clear();
         curRow++;
     }
-    cout << curRow << endl;
+    ifstream.close();
     return array;
 }
