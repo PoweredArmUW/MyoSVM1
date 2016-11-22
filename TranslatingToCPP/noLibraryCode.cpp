@@ -1,5 +1,7 @@
 #include <cmath>
 #include <iostream>
+#include <array>
+
 using namespace std;
 
 class LowPassFilter()
@@ -101,6 +103,19 @@ public:
         return m_x.filter(x, timestamp, alpha(cutoff)); 
     }
 
-    double checkAccuracy()
+    double checkAccuracy(double predicted[], double goldset[])
+    {
+        int correct = 0;
+        for (int i = 0; i<predicted.size(); i ++)
+        {
+            if (predicted[i] == goldset[i])
+                correct+=1;
+        }
+        return 100.0*correct/predicted.size();
+    }
 
+    double CustomScatter()
+    {
+        //code
+    }
 };
