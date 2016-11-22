@@ -1,35 +1,27 @@
 #include <fstream>
-#include <string>
+#include "dataReader.h"
 using namespace std;
 
-class DataArray{
-    private:
-    float* array;
-    int columns;
-    int rows;
-
-    public:
-    DataArray(int r, int c){
-        columns = c;
-        rows = r;
-        array = new float[rows*columns];
+DataArray::DataArray(int r, int c){
+        _cols = c;
+        _rows = r;
+        array = new float[_rows*_cols];
     }
 
-    ~DataArray(){
+DataArray::~DataArray(){
         delete[] array;
     }
 
-    float& index(int x, int y){
-        return array[x*columns+y];
+float& DataArray::index(int x, int y){
+        return array[x*_cols+y];
     }
 
-    int rowCount (){
-        return rows;
+int DataArray::rows (){
+        return _rows;
     }
-    int colCount (){
-        return columns;
+int DataArray::cols (){
+        return _cols;
     }
-};
 
 DataArray* readData(string filename){
     ifstream csvfile;
@@ -80,6 +72,6 @@ DataArray* readData(string filename){
         word.clear();
         curRow++;
     }
-    ifstream.close();
+    csvfile.close();
     return array;
 }
