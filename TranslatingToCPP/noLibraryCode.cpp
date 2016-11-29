@@ -65,11 +65,11 @@ private:
     LowPassFilter m_dx;
     double m_lasttime;
 public:
-    OneEuroFilter(double freq, double mincutoff = 1.0, beta = 0.0, dcutoff = 1.0)
+    OneEuroFilter(int freq, double mincutoff = 1.0, beta = 0.0, dcutoff = 1.0)
     {
-        assert(freq <= 0);
-        assert(mincutoff <= 0);
-        assert(dcutoff <= 0 );
+        assert(freq > 0);
+        assert(mincutoff > 0);
+        assert(dcutoff > 0 );
         m_freq = freq;
         m_mincutoff = mincutoff;
         m_beta = beta;
@@ -119,3 +119,20 @@ public:
         //code
     }
 };
+
+//load array
+//split train and labels array
+
+int freq = 200;
+double mincutoff = 0.8, beta = 0.4, dcutoff = 1.0;
+double duration = 1.0;
+
+f=  OneEuroFilter(freq,mincutoff,beta,dcutoff);
+double timestamp = 20;
+//this wont run??
+while (timestamp < duration)
+{
+    double filtered = f.filter(train, timestamp);  //does it take a array value??
+    timestamp += 1.0/freq;
+}
+
