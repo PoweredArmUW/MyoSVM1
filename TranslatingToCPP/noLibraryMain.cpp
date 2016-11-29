@@ -1,5 +1,7 @@
 #include <cmath>
 #include <iostream>
+#include <array>
+
 using namespace std;
 
 class LowPassFilter()
@@ -63,11 +65,11 @@ private:
     LowPassFilter m_dx;
     double m_lasttime;
 public:
-    OneEuroFilter(double freq, double mincutoff = 1.0, beta = 0.0, dcutoff = 1.0)
+    OneEuroFilter(int freq, double mincutoff = 1.0, beta = 0.0, dcutoff = 1.0)
     {
-        assert(freq <= 0);
-        assert(mincutoff <= 0);
-        assert(dcutoff <= 0 );
+        assert(freq > 0);
+        assert(mincutoff > 0);
+        assert(dcutoff > 0 );
         m_freq = freq;
         m_mincutoff = mincutoff;
         m_beta = beta;
@@ -101,6 +103,47 @@ public:
         return m_x.filter(x, timestamp, alpha(cutoff)); 
     }
 
-    double checkAccuracy()
+    double checkAccuracy(double predicted[], double goldset[])
+    {
+        int correct = 0;
+        for (int i = 0; i<predicted.size(); i ++)
+        {
+            if (predicted[i] == goldset[i])
+                correct+=1;
+        }
+        return 100.0*correct/predicted.size();
+    }
 
+    double CustomScatter()
+    {
+        //code
+    }
 };
+
+//load array into arr;
+double arr[3][8]; //arbitrary array
+int arrRow = 3;
+
+double train[arrRow][8];
+double label[arrRow];
+for (int i = 0; i < arrRow; i++)
+{
+    for (int j = 0; j<8; j++)
+    {
+        train[i][j] = arr[i][j];
+    }
+    label[i] = arr[i][8];
+}
+
+int freq = 200;
+double mincutoff = 0.8, beta = 0.4, dcutoff = 1.0;
+double duration = 1.0;
+
+f=  OneEuroFilter(freq,mincutoff,beta,dcutoff);
+double timestamp = 20;
+//this wont run??
+while (timestamp < duration)
+{
+    double filtered = f.filter(train, timestamp);  //does it take a array value??
+    timestamp += 1.0/freq;
+}
