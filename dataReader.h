@@ -11,12 +11,12 @@ private:
     int _rows;
 public:
     DataArray(int, int);
+    DataArray(DataArray&, bool);
+    DataArray(string filename);
     ~DataArray();
     float& index(int, int);
     int rows();
     int cols();
 };
-
-DataArray* readData(string filename);
 
 #endif
