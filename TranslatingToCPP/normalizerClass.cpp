@@ -46,8 +46,11 @@ public:
 	//idk what it returns yet
 	void fit_transform(double x[][9])
 	{
+		//check_array x
+		.
+		.
+		.
 
-		
 	}
 
 };
