@@ -1,7 +1,12 @@
 #include <fstream>
-#include <iostream>
 #include "dataReader.h"
 using namespace std;
+
+DataArray::DataArray(){
+    _cols = 0;
+    _rows = 0;
+    array = new float [0];
+}
 
 DataArray::DataArray(int r, int c){
         _cols = c;
@@ -98,4 +103,17 @@ DataArray::DataArray(string filename){
         curRow++;
     }
     csvfile.close();
+}
+
+DataArray& DataArray::operator=(DataArray& orig){
+    _rows = orig.rows();
+    _cols = orig.cols();
+    delete[] array;
+    array = new float[_rows*_cols];
+    for (int i=0; i<orig.rows(); i++){
+        for (int j=0; j<orig.cols(); j++){
+            this->index(i,j) = orig.index(i,j);
+        }
+    }
+    return *this;
 }
