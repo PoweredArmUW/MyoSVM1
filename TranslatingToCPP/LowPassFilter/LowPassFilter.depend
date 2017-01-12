@@ -18,3 +18,16 @@
 	<cmath>
 	<assert.h>
 
+1484200733 source:c:\users\yan\dropbox\documents\powerarm\translatingtocpp\lowpassfilter\main.cpp
+	<stdio.h>
+	<math.h>
+	"graphFunc.h"
+	"LowPassFilter.h"
+	<cmath>
+
+1484200761 c:\users\yan\dropbox\documents\powerarm\translatingtocpp\lowpassfilter\graphfunc.h
+	<stdio.h>
+	<math.h>
+
+1484201191 c:\users\yan\dropbox\documents\powerarm\translatingtocpp\lowpassfilter\lowpassfilter.h
+
