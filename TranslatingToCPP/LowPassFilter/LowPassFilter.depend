@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1484198234 source:c:\users\yan\dropbox\documents\cpp programs\lowpassfilter\graphfunc.cpp
+	<stdio.h>
+	<math.h>
+
+1484200022 source:c:\users\yan\dropbox\documents\cpp programs\lowpassfilter\main.cpp
+	<stdio.h>
+	<math.h>
+	"graphFunc.h"
+	"LowPassFilter.h"
+	<cmath>
+
+1484198336 c:\users\yan\dropbox\documents\cpp programs\lowpassfilter\graphfunc.h
+	<stdio.h>
+	<math.h>
+
+1484200076 c:\users\yan\dropbox\documents\cpp programs\lowpassfilter\lowpassfilter.h
+	<cmath>
+	<assert.h>
+

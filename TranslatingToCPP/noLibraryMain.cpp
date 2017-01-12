@@ -4,57 +4,8 @@
 
 using namespace std;
 
-class LowPassFilter()
-{
-private:
-    double m_alpha;
-    double m_y;
-    double m_s;
-public:
-    LowPassFilter()
-    {
-        m_alpha = 0;
-        y = 0;
-        s = 0;
-    }
-    LowPassFilter(double alpha)
-    {
-        m_alpha = setAlpha(alpha);
-        y = 0;
-        s = 0; 
-    }
 
-
-    double setAlpha(double alpha)
-    {
-        if(alpha <= 0 || alpha > 1.0)
-        {
-            assert(alpha <= 0 || alpha > 1.0)
-        }
-        return alpha;
-    }
-
-    //call function
-    double filter(double value, double timestamp = 0, double alpha = 0)
-    {
-        //this one is sketchy
-        if(m_alpha == 0)
-            m_alpha = setAlpha(alpha); 
-        if(m_y == 0)
-            m_s = value;
-        else
-            m_s = m_alpha*value + (1.0-m_alpha)*m_s;
-        m_y = value;
-        return m_s;
-    }
-
-    double returnLastValue()
-    {
-        return m_y;
-    }
-};
-
-class OneEuroFilter()
+class OneEuroFilter
 {
 private:
     double m_freq;
@@ -99,8 +50,8 @@ public:
         else
             dx = (x - prev_x)*m_freq;
         edx = m_dx.filter(dx, timestamp, alpha(m_dcutoff));
-        double cutoff = m_mincutoff + m_beta * fabs(edx.filter); 
-        return m_x.filter(x, timestamp, alpha(cutoff)); 
+        double cutoff = m_mincutoff + m_beta * fabs(edx.filter);
+        return m_x.filter(x, timestamp, alpha(cutoff));
     }
 
     double checkAccuracy(double predicted[], double goldset[])
