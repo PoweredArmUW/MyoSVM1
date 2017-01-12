@@ -17,7 +17,6 @@ void graph(float data[], int n)
 	}
 	float range = (max - min);
 
-
 	for (int i=(int)height; i>0; i--) {
 		printf("%.2f\t",min+(i-0.5)*range/height);
 		for (int j=0; j<n; j++) {
@@ -32,5 +31,15 @@ void graph(float data[], int n)
 	}
 }
 
+float range(float data[], int n) {
+	// Graph is 12 bars high peak to peak, and 80 chars long (at max)
+	float max = -1000000000, min = 1000000000;
+	// Find max and min vals
+	for (int i=0; i<n; i++) {
+		if (data[i] > max) max = data[i];
+		if (data[i] < min) min = data[i];
+	}
+	return (max - min);
+}
 #endif // GRAPHFUNC_H
 

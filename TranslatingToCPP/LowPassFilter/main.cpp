@@ -12,17 +12,6 @@ void low_pass(float data[], int n, float alpha) {
 	}
 }
 
-float range(float data[], int n) {
-	// Graph is 12 bars high peak to peak, and 80 chars long (at max)
-	float max = -1000000000, min = 1000000000;
-	// Find max and min vals
-	for (int i=0; i<n; i++) {
-		if (data[i] > max) max = data[i];
-		if (data[i] < min) min = data[i];
-	}
-	return (max - min);
-}
-
 double generateAlpha(double freq = 200, double mincutoff = 0.8, double beta = 0.4)
 {
     double te = 1.0/freq;
@@ -34,6 +23,7 @@ int main(int argc, char* argv[]) {
 	int num_trials = 50;
 	float gains[50];
 	float filtered[50];
+	LowPassFilter f(generateAlpha());
 
 	for (float alpha=0.1; alpha<=0.35; alpha+=0.1) {
 		for (int i=0; i<num_trials; i++) {
@@ -41,6 +31,7 @@ int main(int argc, char* argv[]) {
 			float data[num_samples];
 			for (int j=0; j<num_samples; j++) {
 				data[j] = sin((i/80.0)*j);
+				data[j] = f.filter(data[j]);
 			}
 			gains[i] = range(data, num_samples)/2;
 		}
