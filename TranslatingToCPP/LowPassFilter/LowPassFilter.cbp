@@ -34,6 +34,8 @@
 		</Compiler>
 		<Unit filename="LowPassFilter.cpp" />
 		<Unit filename="LowPassFilter.h" />
+		<Unit filename="OneEuroFilter.h" />
+		<Unit filename="OneEuroFilterOld.h" />
 		<Unit filename="graphFunc.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>

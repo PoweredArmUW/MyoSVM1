@@ -13,22 +13,20 @@ void low_pass(float data[], int n, float alpha) {
 	}
 }
 
-/*
 double generateAlpha(double freq = 200, double mincutoff = 0.8, double beta = 0.4)
 {
     double te = 1.0/freq;
     double tau = 1.0/(2*M_PI*mincutoff);
     return (1.0/(1.0 + tau/te));
 }
-*/
 
 int main(int argc, char* argv[]) {
-	const int num_trials = 60;
+	int num_trials = 60;
 	float gains1[num_trials];
 	float gains2[num_trials];
-	float gains3[num_trials];
 	float filtered[num_trials];
-	LowPassFilter f(generateAlpha());
+	OneEuroFilter oef(200, 0.8, 0.4, 1.0);
+	LowPassFilter lpf(generateAlpha());
 
     for (int i=0; i<num_trials; i++) {
         int num_samples = 800;
@@ -37,13 +35,11 @@ int main(int argc, char* argv[]) {
         for (int j = 0; j < num_samples; j++)
         {
             data[j] = sin((i/80.0)*j);
-            filtered[j] = f.filter(data[j]);
-
+            filtered[j] = oef.filter(data[j]);
         }
         gains1[i] = range(data, num_samples)/2;
         gains2[i] = range(filtered, num_samples)/2;
     }
-
     // Graph Function
     printf("Unfiltered\n\n");
     graph(gains1, num_trials);

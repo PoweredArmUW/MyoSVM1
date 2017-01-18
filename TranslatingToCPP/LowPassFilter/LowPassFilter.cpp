@@ -20,7 +20,7 @@ LowPassFilter::LowPassFilter(double alpha)
 
 double LowPassFilter::setAlpha(double alpha)
 {
-    assert(alpha > 0 && alpha < 1.0);
+    assert(alpha > 0 && alpha < 1 + TOL);
     return alpha;
 }
 

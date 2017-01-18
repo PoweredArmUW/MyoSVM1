@@ -18,11 +18,12 @@
 	<cmath>
 	<assert.h>
 
-1484242864 source:c:\users\yan\dropbox\documents\powerarm\translatingtocpp\lowpassfilter\main.cpp
+1484258196 source:c:\users\yan\dropbox\documents\powerarm\translatingtocpp\lowpassfilter\main.cpp
 	<stdio.h>
 	<math.h>
 	"graphFunc.h"
 	"LowPassFilter.h"
+	"OneEuroFilter.h"
 	<cmath>
 
 1484200761 c:\users\yan\dropbox\documents\powerarm\translatingtocpp\lowpassfilter\graphfunc.h
@@ -31,8 +32,13 @@
 
 1484201191 c:\users\yan\dropbox\documents\powerarm\translatingtocpp\lowpassfilter\lowpassfilter.h
 
-1484201300 source:c:\users\yan\dropbox\documents\powerarm\translatingtocpp\lowpassfilter\lowpassfilter.cpp
+1484258156 source:c:\users\yan\dropbox\documents\powerarm\translatingtocpp\lowpassfilter\lowpassfilter.cpp
 	<cmath>
 	<assert.h>
+	"LowPassFilter.h"
+
+1484712104 c:\users\yan\dropbox\documents\powerarm\translatingtocpp\lowpassfilter\oneeurofilter.h
+	<cmath>
+	"assert.h"
 	"LowPassFilter.h"
 
